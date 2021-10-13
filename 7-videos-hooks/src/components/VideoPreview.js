@@ -1,24 +1,18 @@
 import React from 'react';
 import './VideoPreview.css'
 
-class VideoPreview extends React.Component {
+const VideoPreview = ({ video, onClick }) => {
 
-    onClick = () => {
-        this.props.onClick(this.props.video)
-    }
-    
-    render() {
-        return (
-            <div className="video-preview item" onClick={this.onClick}>
-                <img alt={this.props.video.snippet.title} className="ui image" src={this.props.video.snippet.thumbnails.medium.url}/>
-                <div className="content">
-                    <div className="header">
-                        {this.props.video.snippet.title}
-                    </div>
+    return (
+        <div className="video-preview item" onClick={() => onClick(video)}>
+            <img alt={video.snippet.title} className="ui image" src={video.snippet.thumbnails.medium.url}/>
+            <div className="content">
+                <div className="header">
+                    {video.snippet.title}
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
 };
 
 export default VideoPreview;
